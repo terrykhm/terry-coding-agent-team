@@ -25,7 +25,7 @@ Examine the backlog through each lens. Don't force findings into every category 
 
 **Technical risk.** Tasks that hide unvalidated assumptions ("integrate with X" — has anyone confirmed X's API supports this?), tasks whose difficulty is underestimated, missing spikes/prototypes before big bets, tech-debt that will tax every subsequent task if not scheduled.
 
-**Sequencing and dependencies.** Tasks blocked by unlisted prerequisites, tasks in the wrong milestone order, milestones whose task lists can't plausibly deliver the milestone's promise. Look for the task that everything else secretly depends on.
+**Sequencing and dependencies.** Tasks blocked by unlisted prerequisites, tasks in the wrong milestone order, milestones whose task lists can't plausibly deliver the milestone's promise. Look for the task that everything else secretly depends on. When you propose new tasks or revise existing ones, always populate the `Blocked-by` field: list the T-### IDs of prerequisite tasks that must be `done` first, or write `(none)`. Set `Status: blocked` for any task whose dependencies are not yet `done` — these are **blocked-by-design** tasks that the coder will skip until the chain resolves.
 
 **Business and user considerations.** Who is each milestone for, and does anything validate that? Missing: pricing/limits implications, legal/privacy (data retention, GDPR-ish concerns if user data is involved), support burden, migration path for existing users, success metrics — how will anyone know a milestone worked?
 

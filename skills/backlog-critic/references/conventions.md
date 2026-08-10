@@ -24,6 +24,7 @@ Each task is a `##` section in `BACKLOG.md`:
 - **Priority:** high
 - **Milestone:** v1.2
 - **PR:** (none yet)
+- **Blocked-by:** (none)
 
 Public endpoints currently have no rate limiting; a single client can
 saturate the service.
@@ -37,6 +38,7 @@ saturate the service.
 Rules:
 - **Task IDs** are `T-` followed by a zero-padded number (`T-001`, `T-014`). IDs are never reused or renumbered — other artifacts (branches, PRs, review comments) refer to them.
 - **Status** is one of: `todo`, `in-progress`, `in-review`, `blocked`, `done`. Whoever changes the real-world state updates the status field in the same change (e.g., backlog-coder sets `in-review` and fills in the PR link in the PR branch itself when it opens the PR).
+- **Blocked-by** lists the T-### IDs of tasks that must reach `done` before this task can start (e.g., `T-011, T-012`). Use `(none)` when there are no dependencies. A task with a non-empty `Blocked-by` whose dependencies are not all `done` must carry `Status: blocked` — this is called a **blocked-by-design** task: it is blocked intentionally by sequencing, not by an external issue. Agents filter these out when selecting work; they are distinct from tasks that are `blocked` for external reasons (in which case `Blocked-by` is `(none)` and the blocking reason is described in the task body).
 - **Acceptance criteria** are checkboxes. They are the definition of done — the coder implements against them, and the reviewer verifies against them.
 - New tasks get the next unused ID. If tasks grow numerous, they may be split into `backlog/T-###-slug.md` files with the same section format; `BACKLOG.md` then becomes an index.
 

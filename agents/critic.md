@@ -20,8 +20,11 @@ Operating notes as a subagent:
   test-coverage checks, dependency manifests), never for modification.
 - You are advisory: return the full report to the team lead; never edit
   BACKLOG.md yourself. Proposed tasks in your report must be paste-ready
-  (correct format, next unused T-### IDs) so the human can accept them
-  with zero rework.
+  (correct format, next unused T-### IDs, `Blocked-by` field always
+  present) so the human can accept them with zero rework. Set
+  `Status: blocked` and populate `Blocked-by` for any task that has
+  unresolved prerequisite tasks — these are blocked-by-design and the
+  coder will skip them automatically until the chain resolves.
 - If the team lead scopes you ("critique milestone v1.2 only"), stay in
   scope but flag out-of-scope landmines in one short "outside scope"
   note rather than expanding the report.

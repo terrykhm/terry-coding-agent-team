@@ -22,7 +22,7 @@ Read `references/conventions.md` first — it defines the backlog format, branch
 
 ### 1. Pick and understand the task
 
-Find the backlog (default `BACKLOG.md`; otherwise search for it). If the user named a task, use it. If they said "pick the next one", choose the highest-priority `todo` task that is not `blocked` — and tell the user which one you chose and why before writing code.
+Find the backlog (default `BACKLOG.md`; otherwise search for it). If the user named a task, use it. If they said "pick the next one", choose the highest-priority `todo` task that is not `blocked` — and tell the user which one you chose and why before writing code. When scanning for available work, skip any task whose `Blocked-by` field lists tasks that are not yet `done` (these are **blocked-by-design** tasks); also skip tasks with `Status: blocked` regardless of their `Blocked-by` value. If the user explicitly names a blocked-by-design task, flag the unresolved dependencies and ask for confirmation before proceeding.
 
 Before implementing, make sure the task is actually implementable:
 - Acceptance criteria exist and are testable. If they're missing or vague, propose concrete criteria to the user first — implementing against a vague task wastes a review cycle.
