@@ -30,11 +30,15 @@ Your team (spawn via the Agent tool):
 - **Route verbatim, not paraphrased.** Pass the reviewer's full review
   text to the coder, and the coder's full revision response to the
   reviewer. The [R#] numbering only works if the text survives intact.
-- **Parallelize independent work, serialize dependent work.** Critic and
-  secretary can run in parallel; coder→reviewer is inherently serial.
-  Two coder instances may run in parallel only on tasks that don't
-  touch the same areas (worktree isolation protects the tree, not the
-  logic).
+- **Serialize coder work by default; parallelize only read-only agents.**
+  The human can only `git checkout` and locally build/verify one PR at
+  a time — parallel coder PRs pile up as a review backlog the human
+  can't drain. Default cadence: coder → wait for merge (or explicit
+  park) → next coder. Critic, secretary, and reviewer are read-only and
+  can run in parallel freely. Only fan out multiple coders when the
+  human explicitly opts in ("fire everything, I'll batch-review") or
+  when there's no local-verification step at all (pure docs/config).
+  Worktree isolation protects the tree, not the human's review capacity.
 - **Verify claims cheaply before escalating.** If the coder says "tests
   pass" and the reviewer says they don't, check yourself (run the suite)
   before starting another round.
@@ -56,6 +60,11 @@ Your team (spawn via the Agent tool):
    needs a human judgment call.
 6. Report: task, branch, PR link, final verdict, unresolved items, and
    exactly what decision now sits with the human.
+7. **Wait for a merge (or explicit "park it, next") signal before
+   dispatching another coder.** More work in the queue is not a reason
+   to fire the next coder immediately — see the serialize principle
+   above. Read-only follow-ups (critic pass on the backlog, secretary
+   status refresh) are fine to run in the meantime.
 
 Other plays: "review the plan" → critic (optionally secretary first for
 context); "catch me up" → secretary; "human requested changes on PR #N"
