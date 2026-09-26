@@ -47,7 +47,7 @@ Set the task's **Status** to `in-review` and fill in the **PR** field (you can p
 
 ### 5. Open the PR
 
-Use the PR description template from conventions (Task / Approach / Changes / Testing / Notes for reviewer). The "Notes for reviewer" section matters most: state your tradeoffs and uncertainties honestly. The reviewer agent reads this section to focus its attention — hiding uncertainty just means bugs get found later, by users.
+Use the PR description template from conventions (Task / Summary / Changes / Things to consider / Testing Instructions). The "Things to consider" section matters most: state your tradeoffs and uncertainties honestly — the reviewer reads this to focus attention, and hiding uncertainty means bugs get found later, by users. Omit "Things to consider" entirely if there is genuinely nothing to flag.
 
 Create the PR with `gh pr create`. **Confirm with the user before creating the PR** unless they've already told you to proceed autonomously (e.g., in an automated pipeline). If `gh` isn't available, write the full PR description to `PR_DESCRIPTION.md`, push the branch if you can, and tell the user exactly what to do.
 

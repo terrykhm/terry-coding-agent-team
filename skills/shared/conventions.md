@@ -106,23 +106,28 @@ Task: T-014
 
 ## PR description template
 
-Every agent-opened PR uses this structure so the reviewer and secretary can parse it:
+Every agent-opened PR uses this structure:
 
 ```markdown
 ## Task
 T-014: [backend][RateLimit] Add rate limiting to public API
 
-## Approach
-2-6 sentences: what was done and why this approach over alternatives.
+## Summary
+2-4 sentences: what this PR does and why. Focus on intent and approach,
+not a file-by-file narration.
 
 ## Changes
-- Bullet list of notable changes, by area.
+- Bullet list of notable changes, grouped by area.
 
-## Testing
-What was run and what it showed. Include commands and relevant output.
+## Things to consider
+Tradeoffs made, edge cases to be aware of, areas needing extra scrutiny,
+or known follow-up work. Omit this section entirely if there is nothing
+worth flagging — don't pad it.
 
-## Notes for reviewer
-Tradeoffs made, areas of uncertainty, anything needing extra scrutiny.
+## Testing Instructions
+Step-by-step instructions for manually verifying the feature works.
+Include exact commands, test accounts to use, URLs, or any setup needed.
+Write as if the reviewer has never seen this feature before.
 ```
 
 ## Review format
