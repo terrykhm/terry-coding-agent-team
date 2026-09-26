@@ -55,7 +55,9 @@ Explicit list of anything you assumed that wasn't stated. Each assumption is a p
 
 ## Proposed tasks
 
-## T-015: <title>
+Task titles use the naming convention: `[domain][Feature] title` or `[domain][Feature] N/X title` for milestone steps (see conventions.md for valid domain tags and type tags).
+
+## T-015: [backend][Auth] 1/3 <short title>
 
 - **Status:** todo
 - **Priority:** high / medium / low
@@ -71,7 +73,7 @@ Explicit list of anything you assumed that wasn't stated. Each assumption is a p
 
 ---
 
-## T-016: <title>
+## T-016: [backend][Auth] 2/3 <short title>
 ...
 
 ## Questions for the team

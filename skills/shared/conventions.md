@@ -18,7 +18,7 @@ MILESTONES.md         # optional: milestone definitions and target dates
 Each task is a `##` section in `BACKLOG.md`:
 
 ```markdown
-## T-014: Add rate limiting to public API
+## T-014: [backend][RateLimit] Add rate limiting to public API
 
 - **Status:** todo
 - **Priority:** high
@@ -42,10 +42,59 @@ Rules:
 - **Acceptance criteria** are checkboxes. They are the definition of done — the coder implements against them, and the reviewer verifies against them.
 - New tasks get the next unused ID. If tasks grow numerous, they may be split into `backlog/T-###-slug.md` files with the same section format; `BACKLOG.md` then becomes an index.
 
+## Naming convention
+
+All task titles and commit messages use a tag prefix to capture domain and feature context at a glance.
+
+**Format:**
+```
+[domain][Feature] Short title
+[domain][Feature][type] Short title          ← add type tag only when meaningful
+[domain][Feature] N/X Short title            ← multi-step milestone task or commit
+[domain][Feature][type] N/X Short title
+```
+
+**Domain tags** — pick the layer the change primarily lives in:
+
+| Tag | Use for |
+|---|---|
+| `frontend` | Web UI, browser-side code, CSS |
+| `backend` | Server, API, business logic, database |
+| `iOS` | iOS / Swift / SwiftUI native code |
+| `Android` | Android / Kotlin native code |
+| `shared` | Cross-platform utilities, shared libraries |
+| `infra` | CI/CD, Docker, infrastructure, build config |
+| `docs` | Documentation only |
+
+**Feature tag** — PascalCase noun naming the feature or product area (`Booking`, `Auth`, `Dashboard`, `Payment`, `Profile`, `Onboarding`, etc.). Match the feature name used in the milestone or backlog. Use `Core` for foundational work that doesn't belong to a specific feature.
+
+**Type tag** (optional) — add only when the type isn't already obvious from the title:
+
+| Tag | Use for |
+|---|---|
+| `fix` | Bug fix |
+| `refactor` | Refactoring with no behavior change |
+| `test` | Tests only |
+| `perf` | Performance improvement |
+| `security` | Security-specific change |
+
+**Milestone step** (optional) — `N/X` between the last tag and the title, where N is this step and X is the total number of steps. Use when a milestone's work is split across multiple sequential tasks or commits so the sequence is visible at a glance.
+
+**Examples:**
+```
+[backend][Booking] Add data pipeline for booking intake
+[backend][Booking][fix] Resolve duplicate entry on concurrent requests
+[iOS][Auth] 1/3 Add Keychain storage for session token
+[iOS][Auth] 2/3 Wire token refresh into network layer
+[iOS][Auth] 3/3 Add logout and token invalidation
+[infra][Core] Migrate CI from CircleCI to GitHub Actions
+[frontend][Dashboard][perf] Lazy-load chart components
+```
+
 ## Branches and commits
 
 - Branch name: `task/T-014-rate-limiting` (task ID + short slug).
-- Commit messages: conventional-commit style (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`), body references the task ID.
+- Commit messages: use the naming convention above. Reference the task ID in the commit body.
 - One task per branch/PR. If a task is too big for one PR, that is a backlog problem — split the task first.
 
 ## PR description template
@@ -54,7 +103,7 @@ Every agent-opened PR uses this structure so the reviewer and secretary can pars
 
 ```markdown
 ## Task
-T-014: Add rate limiting to public API
+T-014: [backend][RateLimit] Add rate limiting to public API
 
 ## Approach
 2-6 sentences: what was done and why this approach over alternatives.
@@ -74,7 +123,7 @@ Tradeoffs made, areas of uncertainty, anything needing extra scrutiny.
 Reviews (from pr-reviewer or humans) use numbered findings so revisions can reference them precisely:
 
 ```markdown
-## Review of PR #NN (T-014)
+## Review of PR #NN — T-014: [backend][RateLimit] Add rate limiting to public API
 
 **Verdict: REQUEST_CHANGES**   <!-- or: APPROVE_WORTHY -->
 
