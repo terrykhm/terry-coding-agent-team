@@ -113,8 +113,9 @@ Every agent-opened PR uses this structure:
 T-014: [backend][RateLimit] Add rate limiting to public API
 
 ## Summary
-2-4 sentences: what this PR does and why. Focus on intent and approach,
-not a file-by-file narration.
+- Top-level bullets: what this PR does and why.
+  - Nested bullets for elaboration, tradeoffs, or approach detail where useful.
+- Focus on intent, not a file-by-file narration.
 
 ## Changes
 - Bullet list of notable changes, grouped by area.
