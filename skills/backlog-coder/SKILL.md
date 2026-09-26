@@ -37,7 +37,7 @@ Spend real time reading the codebase before deciding on an approach: how similar
 Write a short plan (in your head or as a scratch note): files to touch, approach, how each acceptance criterion will be verified. Then:
 
 - Create the branch: `task/T-###-short-slug`.
-- Implement in small, coherent commits (use the naming convention from conventions.md — `[domain][Feature] title` — with the task ID in the body).
+- Implement in small, coherent commits. Title: `[domain][Feature] short description` — no task ID in the title. Body: `Task: T-###`.
 - Write or update tests for every acceptance criterion — the reviewer will check criteria against tests, so an untested criterion is a guaranteed `[R#]` finding.
 - Run the test suite and any linters/formatters the repo uses. Fix what you broke. Never open a PR with failing tests unless the user explicitly wants a draft.
 

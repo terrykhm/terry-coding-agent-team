@@ -94,8 +94,15 @@ All task titles and commit messages use a tag prefix to capture domain and featu
 ## Branches and commits
 
 - Branch name: `task/T-014-rate-limiting` (task ID + short slug).
-- Commit messages: use the naming convention above. Reference the task ID in the commit body.
+- Commit title (first line): tag prefix + short description only — no task ID.
+- Commit body: include the task ID here (e.g. `Task: T-014`).
 - One task per branch/PR. If a task is too big for one PR, that is a backlog problem — split the task first.
+
+```
+[backend][RateLimit] add per-API-key rate limiting middleware
+
+Task: T-014
+```
 
 ## PR description template
 
